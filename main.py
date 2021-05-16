@@ -1,15 +1,11 @@
-from model.question import Question
-from modules.questionProviderModule import get_questions
-
-questions = [] # type: list[Question]
+from modules import questionsModule as qm, reportModule as rm, caesarCipherModule as ccm
 
 class Main:
-    questions = get_questions()
+    questions = qm.get_questions()
 
-    for question in questions:
-        number = question.number
-        if number < 10:
-            number = ' ' + str(number)
-        print(str(number) + ' | ' + question.cipher)
-        print('R: | ' + question.answer)
-        print(200 * '-')
+    #ccm.runCaesar([question for question in questions if question.answer == ''])
+
+    rm.print_unresolved(questions)
+    #rm.print_resolved(questions)
+    #rm.print_results(questions)
+    #rm.print_resolved_percent(questions)
